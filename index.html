@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>랜덤 NFC 선물</title>
+    <title>행운의 응원상자</title>
     <style>
         /* 1. 기본 스타일 및 배경 이미지 */
         :root {
@@ -29,10 +29,11 @@
         #content-container {
             padding: 30px;
             border-radius: 20px;
-            background-color: rgba(255, 255, 255, 0.95); /* 반투명 흰색 배경 */
+            background-color: rgba(255, 255, 255, 0.95); 
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-            max-width: 90%;
-            width: 500px;
+            max-width: 600px; 
+            width: 80%; 
+            min-height: 400px;
             transition: opacity 0.5s, transform 0.5s;
         }
         /* 제목 (모든 콘텐츠의 윗단 메시지) */
@@ -99,27 +100,36 @@
     </div>
 
     <script>
-        // 1. 배경 이미지 URL 설정
-        // const BACKGROUND_IMAGE_URL = 'https://images.unsplash.com/photo-1542435503-9d41315b74c4?fit=crop&w=1920&h=1080';
-        // document.documentElement.style.setProperty('--bg-url', `url('${BACKGROUND_IMAGE_URL}')`);
+        // 1. 상수 정의
+        // 페이지 기본 경로
+        const BASE_URL = 'https://jen282.github.io/CheerleaderForU'; 
+        // 이미지 경로
+        const IMAGE_BASE_URL = BASE_URL + '/images';
+        // 콘텐츠 제목
+        const MUSIC_TITLE = '오늘의 응원가🎧'
+        const IMAGE_TITLE = '오늘의 응원짤🌠';
+        const MESSAGE_TITLE = '오늘의 응원메시지💌'
 
         // 2. 콘텐츠 배열 정의 (여기를 수정하세요!)
         const contents = [
             // [TYPE 1: YOUTUBE LINK]
             // YouTube 'watch?v=' 뒤의 ID만 추출해서 value에 넣으세요! (예: 'dQw4w9WgXcQ')
-            { type: 'youtube', value: 'sB6UGX2YPjQ', title: '🎧 오늘의 추천 음악을 들어보세요!', message: '유튜브 링크가 도착했습니다. 영상을 재생하려면 클릭하세요!' },
+            { type: 'youtube', value: 'sB6UGX2YPjQ', title: MUSIC_TITLE , message: '🎵 이 하루, 이 지금 우리 눈부셔 아름다워' },
+            { type: 'youtube', value: 'cvpU-7BO0JE', title: MUSIC_TITLE , message: '🎵 이렇게 멋진 파란 하늘 위로 나르는 마법 융단을 타고' },
+            { type: 'youtube', value: 'tqyrl2V1kTM', title: MUSIC_TITLE , message: '🎵 희망이 떠오르면 절망은 저무니까 기쁨만 기억하고 살자 우린' },
+            
             // [TYPE 2: PHOTO LINK]
-            // Google Drive 직접 접근 URL 또는 Imgur 등 다른 이미지 URL을 사용하세요.
             { 
-            type: 'image', 
-            value: 'https://jen282.github.io/CheerleaderForU/images/기죽지마.JPG', 
-            title: '🐱 아이 귀여워!', 
-            message: '오늘 하루 웃음꽃 활짝 피세요!' 
+                type: 'image', 
+                value: '기죽지마.JPG',
+                title: IMAGE_TITLE, 
+                message: '누가 뭐래도 너가 최고야!' 
             },
+
             
             // [TYPE 3: MESSAGE]
-            { type: 'message', value: '시작은 늘 가장 설레는 순간입니다. 무엇이든 새롭게 시작해 보세요. 당신을 응원합니다!', title: '💌 당신에게 온 비밀 메시지', message: '힘이 되는 격려 메시지입니다.' },
-            { type: 'message', value: '로또 번호: 4, 12, 23, 31, 38, 45', title: '💰 오늘의 행운의 숫자!', message: '재미로 보는 오늘의 행운 숫자!' }
+            { type: 'message', value: '오늘 하루도 화이팅! 행운이 따라오는 하루가 되길 바래🍀', title: MESSAGE_TITLE },
+            { type: 'message', value: '로또 번호: 4, 12, 23, 31, 38, 45', title: MESSAGE_TITLE }
         ];
 
         // 3. 랜덤 선택 로직
@@ -159,7 +169,6 @@
                 <div class="message-box">
                     <p>${selectedContent.value}</p>
                 </div>
-                <p style="margin-top: 25px; color: #666;">${selectedContent.message}</p>
             `;
         }
 
